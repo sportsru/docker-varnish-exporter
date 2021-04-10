@@ -1,14 +1,14 @@
 FROM golang:1.16-buster
 MAINTAINER Mikhail Konyakhin <m.konyakhin@gmail.com>
 
-ENV VARNISH_VERSION 6.6.0-1~buster
+ENV VARNISH_VERSION 6.0.7-1~buster
 ENV PROMETHEUS_VARNISH_EXPORTER_VERSION=1.6
 
 RUN set -ex; \
   apt-get update; \
   apt-get install -y --no-install-recommends gnupg apt-transport-https gzip curl; \
-  curl -L https://packagecloud.io/varnishcache/varnish66/gpgkey | apt-key add -; \
-  echo deb https://packagecloud.io/varnishcache/varnish66/debian/ buster main > /etc/apt/sources.list.d/varnish.list; \
+  curl -L https://packagecloud.io/varnishcache/varnish60lts/gpgkey | apt-key add -; \
+  echo deb https://packagecloud.io/varnishcache/varnish60lts/debian/ buster main > /etc/apt/sources.list.d/varnish.list; \
   apt-get update; \
   apt-get install -y --no-install-recommends varnish=$VARNISH_VERSION
 
